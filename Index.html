@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Políticas de Segurança de Cabeçalho -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com https://fonts.gstatic.com https://api.qrserver.com; img-src 'self' data: https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <title>Loja do D4NTES | Otimização e Segurança Free Fire</title>
+  
+  <!-- Tipografia e Ícones Profissionais -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-base: #0a0b0e;
+      --bg-surface: #111318;
+      --bg-card: #151821;
+      --bg-card-hover: #1a1e2a;
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --accent: #0ea5e9;
+      --success: #10b981;
+      --text-high: #f8fafc;
+      --text-medium: #94a3b8;
+      --text-low: #64748b;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(99, 102, 241, 0.35);
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-base);
+      color: var(--text-high);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Ambient Elements */
+    .ambient-grid {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-image: linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Top Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(10, 11, 14, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: -0.5px;
+      color: var(--text-high);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo i {
+      color: var(--primary);
+    }
+
+    .logo span {
+      color: var(--text-low);
+      font-weight: 400;
+      margin-left: 2px;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--text-medium);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: var(--text-high);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-high);
+      padding: 0.5rem 1rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-card);
+      border-color: var(--text-low);
+    }
+
+    /* Hero Section */
+    .hero {
+      max-width: 1100px;
+      margin: 4.5rem auto 3rem;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--success);
+      padding: 0.3rem 0.8rem;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .status-indicator {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--success);
+      box-shadow: 0 0 8px var(--success);
+    }
+
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      letter-spacing: -1.2px;
+      line-height: 1.15;
+      margin-bottom: 1.2rem;
+      font-weight: 700;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, #fff, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      color: var(--text-medium);
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin: 0 auto 2.5rem;
+      font-weight: 400;
+    }
+
+    .metrics-bar {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 950px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .metric-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .metric-icon {
+      font-size: 1.25rem;
+      color: var(--primary);
+      width: 42px;
+      height: 42px;
+      border-radius: var(--radius-sm);
+      background: rgba(99, 102, 241, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .metric-info h4 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-high);
+    }
+
+    .metric-info span {
+      font-size: 0.8rem;
+      color: var(--text-low);
+    }
+
+    /* Catalog Section */
+    .catalog {
+      max-width: 1200px;
+      margin: 5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.9rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.4rem;
+    }
+
+    .section-header p {
+      color: var(--text-medium);
+      font-size: 0.95rem;
+    }
+
+    .filter-group {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 2.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-medium);
+      padding: 0.6rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .plan-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .plan-card:hover {
+      border-color: var(--border-strong);
+      transform: translateY(-3px);
+      background: var(--bg-card-hover);
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: 1.2rem;
+      right: 1.2rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid var(--border-strong);
+      color: var(--primary);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+    }
+
+    .plan-platform-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .plan-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin: 0.3rem 0 1rem;
+    }
+
+    .plan-price-box {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+      padding-bottom: 1.2rem;
+    }
+
+    .plan-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: var(--text-high);
+    }
+
+    .plan-price span {
+      font-size: 0.95rem;
+      color: var(--text-low);
+      font-weight: 400;
+    }
+
+    .plan-specs {
+      list-style: none;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .plan-specs li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.88rem;
+      color: var(--text-medium);
+    }
+
+    .plan-specs li i {
+      color: var(--success);
+      font-size: 0.8rem;
+    }
+
+    .btn-buy-primary {
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.85rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .btn-buy-primary:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Social & Direct Support Section */
+    .support-container {
+      max-width: 1100px;
+      margin: 5rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+
+    .faq-list details {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      margin-bottom: 0.8rem;
+      padding: 1rem 1.2rem;
+      cursor: pointer;
+    }
+
+    .faq-list summary {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-high);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-list summary::after {
+      content: '\f107';
+      font-family: 'Font Awesome 6 Free';
+      font-weight: 900;
+      color: var(--text-low);
+      transition: transform 0.2s;
+    }
+
+    .faq-list details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    .faq-list p {
+      margin-top: 0.8rem;
+      font-size: 0.88rem;
+      color: var(--text-medium);
+      line-height: 1.6;
+    }
+
+    .channels-box {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+    }
+
+    .channels-box h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .channels-box p {
+      color: var(--text-medium);
+      font-size: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .btn-channel {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-bottom: 1rem;
+      transition: opacity 0.2s;
+    }
+
+    .btn-channel:hover {
+      opacity: 0.92;
+    }
+
+    .channel-whatsapp {
+      background: #15803d;
+    }
+
+    .channel-discord {
+      background: #4f46e5;
+    }
+
+    /* Modal Checkout PIX */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.82);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      text-align: center;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: var(--text-low);
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
+    .btn-close:hover {
+      color: var(--text-high);
+    }
+
+    .qr-frame {
+      background: #ffffff;
+      padding: 10px;
+      border-radius: var(--radius-md);
+      display: inline-block;
+      margin: 1.2rem 0;
+    }
+
+    .pix-input-group {
+      display: flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 0.35rem 0.5rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .pix-input-group input {
+      background: transparent;
+      border: none;
+      color: var(--text-high);
+      width: 100%;
+      font-size: 0.8rem;
+      font-family: 'JetBrains Mono', monospace;
+      outline: none;
+    }
+
+    .btn-copy-code {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .status-check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-size: 0.85rem;
+      color: var(--text-medium);
+    }
+
+    /* Drawer de Licenças */
+    .drawer {
+      position: fixed;
+      top: 0;
+      right: -420px;
+      width: 100%;
+      max-width: 400px;
+      height: 100%;
+      background: var(--bg-surface);
+      border-left: 1px solid var(--border-subtle);
+      z-index: 1001;
+      transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 2rem;
+      overflow-y: auto;
+    }
+
+    .drawer.active {
+      right: 0;
+    }
+
+    .license-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .key-box {
+      background: #090a0d;
+      border: 1px solid var(--border-subtle);
+      padding: 0.6rem;
+      border-radius: var(--radius-sm);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--success);
+      margin: 0.6rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Toast */
+    .toast-notice {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border-strong);
+      color: var(--text-high);
+      padding: 0.8rem 1.4rem;
+      border-radius: var(--radius-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.2s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    .toast-notice.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 768px) {
+      .support-container { grid-template-columns: 1fr; }
+      nav ul { display: none; }
+      .metrics-bar { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-grid"></div>
+
+  <!-- Cabeçalho -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo">
+        <i class="fa-solid fa-terminal"></i>
+        D4NTES<span>STORE</span>
+      </a>
+      <nav>
+        <ul>
+          <li><a href="#planos">Catálogo de Planos</a></li>
+          <li><a href="#suporte">Suporte Técnico</a></li>
+          <li>
+            <button onclick="toggleDrawer(true)" class="btn-outline">
+              <i class="fa-solid fa-key"></i> Licenças Ativas
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Principal -->
+  <section class="hero">
+    <div class="status-badge">
+      <span class="status-indicator"></span> Servidores Online & Bypass Atualizado
+    </div>
+    <h1>OTIMIZAÇÃO PROFISSIONAL PARA <span>FREE FIRE</span></h1>
+    <p>Tecnologia avançada para estabilização de mira, cálculo de sensibilidade e injeção limpa de comandos sem dependência de Root ou Jailbreak.</p>
+
+    <div class="metrics-bar">
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="metric-info">
+          <h4>Proteção Antiban</h4>
+          <span>Injeção em memória protegida</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-bolt"></i></div>
+        <div class="metric-info">
+          <h4>Entrega Imediata</h4>
+          <span>Processamento instantâneo via PIX</span>
+        </div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-icon"><i class="fa-solid fa-headset"></i></div>
+        <div class="metric-info">
+          <h4>Suporte Dedicado</h4>
+          <span>Atendimento via WhatsApp e Discord</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Catálogo -->
+  <section id="planos" class="catalog">
+    <div class="section-header">
+      <h2>Planos Disponíveis</h2>
+      <p>Selecione a sua plataforma operacional para visualizar as soluções específicas.</p>
+    </div>
+
+    <div class="filter-group" id="platform-filters">
+      <button class="filter-btn active" data-platform="ios">
+        <i class="fa-brands fa-apple"></i> Apple iOS
+      </button>
+      <button class="filter-btn" data-platform="android">
+        <i class="fa-brands fa-android"></i> Google Android
+      </button>
+      <button class="filter-btn" data-platform="emulator">
+        <i class="fa-solid fa-desktop"></i> Emulador PC
+      </button>
+    </div>
+
+    <div class="plans-grid" id="plans-container">
+      <!-- Carregamento via JS -->
+    </div>
+  </section>
+
+  <!-- Atendimento e FAQ -->
+  <section id="suporte" class="support-container">
+    <div class="faq-list">
+      <h3 style="font-family: 'Space Grotesk'; font-size: 1.4rem; margin-bottom: 1.5rem;">Perguntas Frequentes</h3>
+      
+      <details>
+        <summary>Como funciona a liberação automática da licença?</summary>
+        <p>A transação PIX é monitorada em tempo real. No momento em que o pagamento é recebido pela instituição, o sistema valida a confirmação e gera a chave de acesso imediatamente no seu navegador, armazenando-a no seu dispositivo.</p>
+      </details>
+
+      <details>
+        <summary>É necessário formatar ou desbloquear o aparelho?</summary>
+        <p>Não. Os produtos da Loja do D4NTES foram projetados para serem executados em sistemas operacionais nativos, dispensando Root no Android e Jailbreak em dispositivos iOS.</p>
+      </details>
+
+      <details>
+        <summary>O que fazer se precisar de auxílio na instalação?</summary>
+        <p>Nossa equipe técnica permanece disponível diariamente através dos canais de atendimento direto (WhatsApp e Discord) para auxiliar passo a passo no processo de configuração.</p>
+      </details>
+    </div>
+
+    <div class="channels-box">
+      <h3>Canais Oficiais de Atendimento</h3>
+      <p>Selecione um dos canais integrados abaixo para falar diretamente com a equipe de suporte ou participar da comunidade:</p>
+
+      <!-- Botão WhatsApp com dados fornecidos -->
+      <a href="https://wa.me/5515998394014?text=Ol%C3%A1,%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20os%20produtos%2
