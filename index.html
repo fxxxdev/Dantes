@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Loja do D4NTES | Otimização e Painéis Free Fire</title>
+  <title>Loja do D4NTES | Painéis & Otimizações Free Fire</title>
   
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
@@ -24,7 +24,7 @@
       --text-medium: #94a3b8;
       --text-low: #64748b;
       --border: rgba(255, 255, 255, 0.08);
-      --border-active: rgba(99, 102, 241, 0.5);
+      --border-active: rgba(99, 102, 241, 0.6);
     }
 
     * {
@@ -38,12 +38,14 @@
       background-color: var(--bg-base);
       color: var(--text-high);
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
+    /* Header */
     header {
       position: sticky;
       top: 0;
-      background: rgba(10, 11, 14, 0.96);
+      background: rgba(10, 11, 14, 0.95);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
       z-index: 100;
@@ -61,7 +63,7 @@
     .logo {
       font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
-      font-size: 1.35rem;
+      font-size: 1.3rem;
       color: var(--text-high);
       text-decoration: none;
       display: flex;
@@ -84,6 +86,7 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      text-decoration: none;
       transition: 0.2s;
     }
 
@@ -94,8 +97,8 @@
 
     /* Hero */
     .hero {
-      max-width: 1100px;
-      margin: 3.5rem auto 2.5rem;
+      max-width: 900px;
+      margin: 3rem auto 2.5rem;
       padding: 0 1.5rem;
       text-align: center;
     }
@@ -111,7 +114,7 @@
       border-radius: 99px;
       font-size: 0.82rem;
       font-weight: 600;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
     }
 
     .status-indicator {
@@ -128,6 +131,7 @@
       letter-spacing: -1px;
       margin-bottom: 1rem;
       font-weight: 700;
+      line-height: 1.15;
     }
 
     .hero h1 span {
@@ -138,15 +142,13 @@
 
     .hero p {
       color: var(--text-medium);
-      font-size: 1.1rem;
-      max-width: 680px;
-      margin: 0 auto 2.5rem;
+      font-size: 1.05rem;
     }
 
-    /* Catálogo e Filtro */
+    /* Seletor e Catálogo */
     .catalog {
       max-width: 1200px;
-      margin: 3rem auto 5rem;
+      margin: 2.5rem auto 4.5rem;
       padding: 0 1.5rem;
     }
 
@@ -157,8 +159,10 @@
 
     .section-header h2 {
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 1.9rem;
-      margin-bottom: 0.4rem;
+      font-size: 2.1rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
     }
 
     .section-header p {
@@ -174,13 +178,13 @@
       flex-wrap: wrap;
     }
 
-    .tab-item {
+    .tab-btn {
       background: var(--bg-surface);
       border: 1px solid var(--border);
       color: var(--text-medium);
-      padding: 0.75rem 1.5rem;
+      padding: 0.8rem 1.6rem;
       border-radius: 8px;
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -190,18 +194,24 @@
       user-select: none;
     }
 
-    .tab-item:hover {
+    .tab-btn:hover {
       border-color: var(--primary);
       color: var(--text-high);
     }
 
-    .tab-item.active {
+    .tab-btn.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+      box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
     }
 
-    .plans-grid {
+    /* Grupos de Plataformas */
+    .platform-group {
+      display: none;
+    }
+
+    .platform-group.active {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.5rem;
@@ -250,13 +260,13 @@
     .plan-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.3rem;
-      margin: 0.3rem 0 1rem;
+      margin: 0.3rem 0 0.8rem;
     }
 
     .plan-price-wrapper {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
       border-bottom: 1px solid var(--border);
-      padding-bottom: 1.2rem;
+      padding-bottom: 1rem;
     }
 
     .plan-price-val {
@@ -273,10 +283,10 @@
 
     .plan-items-list {
       list-style: none;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
       display: flex;
       flex-direction: column;
-      gap: 0.7rem;
+      gap: 0.65rem;
     }
 
     .plan-items-list li {
@@ -300,20 +310,21 @@
       padding: 0.85rem;
       border-radius: 8px;
       font-size: 0.95rem;
-      font-weight: 600;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      transition: background 0.2s;
+      transition: background 0.2s, transform 0.15s;
     }
 
     .btn-buy-action:hover {
       background: var(--primary-hover);
+      transform: scale(1.02);
     }
 
-    /* Suporte e Links Oficiais */
+    /* Suporte e Links */
     .support-section {
       max-width: 1100px;
       margin: 4rem auto 6rem;
@@ -378,7 +389,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* Links nativos 100% funcionais */
     .btn-contact-link {
       display: flex;
       align-items: center;
@@ -397,15 +407,10 @@
       filter: brightness(1.15);
     }
 
-    .btn-whatsapp-theme {
-      background: #15803d;
-    }
+    .btn-whatsapp-theme { background: #15803d; }
+    .btn-discord-theme { background: #5865f2; }
 
-    .btn-discord-theme {
-      background: #5865f2;
-    }
-
-    /* Modal Checkout PIX */
+    /* Modal de Pagamento PIX */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -461,13 +466,35 @@
       height: 180px;
     }
 
+    .pix-key-box {
+      background: #08090d;
+      border: 1px dashed var(--primary);
+      border-radius: 8px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .pix-key-box span {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--text-low);
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .pix-key-box strong {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+
     .pix-copy-box {
       display: flex;
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 6px;
       padding: 0.4rem 0.6rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1rem;
       gap: 0.5rem;
     }
 
@@ -476,7 +503,7 @@
       border: none;
       color: var(--text-high);
       width: 100%;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       font-family: 'JetBrains Mono', monospace;
       outline: none;
     }
@@ -497,13 +524,25 @@
       background: var(--primary-hover);
     }
 
-    .pix-status-info {
-      display: flex;
+    .btn-confirm-wpp {
+      width: 100%;
+      background: #15803d;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
-      font-size: 0.88rem;
-      color: var(--text-medium);
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+      transition: filter 0.2s;
+    }
+
+    .btn-confirm-wpp:hover {
+      filter: brightness(1.15);
     }
 
     /* Drawer de Licenças */
@@ -544,7 +583,6 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      word-break: break-all;
     }
 
     .toast-msg {
@@ -584,7 +622,7 @@
         <i class="fa-solid fa-crosshairs"></i>
         D4NTES<span>STORE</span>
       </a>
-      <button id="nav-btn-licenses" class="btn-licenses-nav">
+      <button onclick="toggleDrawer(true)" class="btn-licenses-nav">
         <i class="fa-solid fa-key"></i> Minhas Licenças
       </button>
     </div>
@@ -593,10 +631,10 @@
   <!-- Hero -->
   <section class="hero">
     <div class="status-badge">
-      <span class="status-indicator"></span> Servidores Online & Bypass 100% Atualizado
+      <span class="status-indicator"></span> Servidores Ativos & Antiban Atualizado
     </div>
     <h1>PAINÉIS & OTIMIZAÇÕES PARA <span>FREE FIRE</span></h1>
-    <p>Injeção segura sem necessidade de Root no Android e sem Jailbreak no iOS. Liberação imediata após o pagamento via PIX.</p>
+    <p>Injeção segura sem necessidade de Root no Android e sem Jailbreak no iOS. Liberação e suporte imediato após o pagamento via PIX.</p>
   </section>
 
   <!-- Catálogo -->
@@ -606,129 +644,122 @@
       <p>Clique na sua plataforma abaixo para carregar os planos específicos:</p>
     </div>
 
+    <!-- Botões de Troca de Plataforma -->
     <div class="filter-tabs">
-      <button class="tab-item active" data-platform="ios">
+      <button class="tab-btn active" id="tab-ios" onclick="selectPlatform('ios')">
         <i class="fa-brands fa-apple fa-lg"></i> Apple iOS
       </button>
-      <button class="tab-item" data-platform="android">
+      <button class="tab-btn" id="tab-android" onclick="selectPlatform('android')">
         <i class="fa-brands fa-android fa-lg"></i> Google Android
       </button>
-      <button class="tab-item" data-platform="emulator">
+      <button class="tab-btn" id="tab-emulator" onclick="selectPlatform('emulator')">
         <i class="fa-solid fa-desktop fa-lg"></i> Emulador PC
       </button>
     </div>
 
-    <div class="plans-grid" id="plans-container">
-      <!-- Inserido dinamicamente -->
-    </div>
-  </section>
-
-  <!-- Suporte e Contatos Oficiais -->
-  <section class="support-section">
-    <div class="faq-container">
-      <h3 style="font-family: 'Space Grotesk'; font-size: 1.4rem; margin-bottom: 1.5rem;">Perguntas Frequentes</h3>
-      
-      <details>
-        <summary>Como funciona o pagamento e liberação?</summary>
-        <p>Você escolhe o plano, escaneia o QR Code ou utiliza o PIX Copia e Cola. O sistema confirma a operação e disponibiliza a sua chave de ativação imediatamente na tela e na sua área de licenças.</p>
-      </details>
-
-      <details>
-        <summary>Preciso de Root ou Jailbreak?</summary>
-        <p>Não. Os painéis foram desenvolvidos para operar em sistemas originais sem que você precise desbloquear ou formatar seu aparelho.</p>
-      </details>
-
-      <details>
-        <summary>Onde recebo suporte para configurar?</summary>
-        <p>Nosso atendimento funciona 24 horas via WhatsApp e através do nosso servidor no Discord.</p>
-      </details>
-    </div>
-
-    <div class="support-card">
-      <h3>Atendimento Direto</h3>
-      <p>Clique nos botões abaixo para ser redirecionado imediatamente:</p>
-
-      <!-- Link direto WhatsApp -->
-      <a href="https://wa.me/5515998394014?text=Ol%C3%A1,%20vim%20pelo%20site%20da%20Loja%20do%20D4NTES%20e%20gostaria%20de%20ajuda%20com%20um%20plano." 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="btn-contact-link btn-whatsapp-theme">
-        <i class="fa-brands fa-whatsapp fa-xl"></i>
+    <!-- GRUPO 1: PLANOS iOS -->
+    <div id="group-ios" class="platform-group active">
+      <div class="plan-card">
         <div>
-          <div>WhatsApp Oficial</div>
-          <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">(15) 99839-4014</span>
+          <div class="plan-platform-name">Apple iOS</div>
+          <h3 class="plan-title">Plano Diário</h3>
+          <div class="plan-price-wrapper">
+            <div class="plan-price-val"><span>R$ </span>15,00</div>
+          </div>
+          <ul class="plan-items-list">
+            <li><i class="fa-solid fa-check"></i> Validade de 24 horas</li>
+            <li><i class="fa-solid fa-check"></i> Injeção Sem Jailbreak</li>
+            <li><i class="fa-solid fa-check"></i> Proteção Antiban Ativa</li>
+          </ul>
         </div>
-      </a>
+        <button class="btn-buy-action" onclick="openPixModal('Plano Diário - iOS', 15.00)">
+          <i class="fa-solid fa-bolt"></i> Comprar via PIX
+        </button>
+      </div>
 
-      <!-- Link direto Discord -->
-      <a href="https://discord.gg/GwmjMZcjP" 
-         target="_blank" 
-         rel="noopener noreferrer" 
-         class="btn-contact-link btn-discord-theme">
-        <i class="fa-brands fa-discord fa-xl"></i>
+      <div class="plan-card">
+        <span class="popular-tag">Mais Vendido</span>
         <div>
-          <div>Servidor Oficial Discord</div>
-          <span style="font-size: 0.8rem; font-weight: 400; opacity: 0.9;">discord.gg/GwmjMZcjP</span>
+          <div class="plan-platform-name">Apple iOS</div>
+          <h3 class="plan-title">Plano Semanal</h3>
+          <div class="plan-price-wrapper">
+            <div class="plan-price-val"><span>R$ </span>39,90</div>
+          </div>
+          <ul class="plan-items-list">
+            <li><i class="fa-solid fa-check"></i> Validade de 7 dias</li>
+            <li><i class="fa-solid fa-check"></i> Sensibilidade Calibrada VIP</li>
+            <li><i class="fa-solid fa-check"></i> Atualizações Diárias</li>
+          </ul>
         </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Modal Checkout PIX -->
-  <div class="modal-backdrop" id="modal-checkout">
-    <div class="modal-box">
-      <button class="modal-close-btn" id="btn-close-checkout"><i class="fa-solid fa-xmark"></i></button>
-      
-      <h3 style="font-family: 'Space Grotesk'; font-size: 1.3rem;" id="modal-title">Pagamento via PIX</h3>
-      <p style="color: var(--text-medium); font-size: 0.92rem; margin-top: 0.2rem;" id="modal-amount">Valor a pagar: R$ 0,00</p>
-
-      <div class="qr-holder">
-        <img id="modal-qr-image" src="" alt="QR Code PIX">
+        <button class="btn-buy-action" onclick="openPixModal('Plano Semanal - iOS', 39.90)">
+          <i class="fa-solid fa-bolt"></i> Comprar via PIX
+        </button>
       </div>
 
-      <div class="pix-copy-box">
-        <input type="text" id="modal-pix-code" readonly>
-        <button class="btn-copy-action" id="btn-copy-code"><i class="fa-regular fa-copy"></i> Copiar</button>
+      <div class="plan-card">
+        <div>
+          <div class="plan-platform-name">Apple iOS</div>
+          <h3 class="plan-title">Plano Mensal</h3>
+          <div class="plan-price-wrapper">
+            <div class="plan-price-val"><span>R$ </span>79,90</div>
+          </div>
+          <ul class="plan-items-list">
+            <li><i class="fa-solid fa-check"></i> Validade de 30 dias</li>
+            <li><i class="fa-solid fa-check"></i> Suporte Prioritário VIP</li>
+            <li><i class="fa-solid fa-check"></i> Instalação Sem Computador</li>
+          </ul>
+        </div>
+        <button class="btn-buy-action" onclick="openPixModal('Plano Mensal - iOS', 79.90)">
+          <i class="fa-solid fa-bolt"></i> Comprar via PIX
+        </button>
       </div>
 
-      <div class="pix-status-info" id="modal-status-box">
-        <i class="fa-solid fa-circle-notch fa-spin"></i>
-        <span>Aguardando pagamento via PIX...</span>
+      <div class="plan-card">
+        <div>
+          <div class="plan-platform-name">Apple iOS</div>
+          <h3 class="plan-title">Plano Vitalício</h3>
+          <div class="plan-price-wrapper">
+            <div class="plan-price-val"><span>R$ </span>159,90</div>
+          </div>
+          <ul class="plan-items-list">
+            <li><i class="fa-solid fa-check"></i> Acesso Permanente</li>
+            <li><i class="fa-solid fa-check"></i> Bypass Vitalício</li>
+            <li><i class="fa-solid fa-check"></i> Canal Privado no Discord</li>
+          </ul>
+        </div>
+        <button class="btn-buy-action" onclick="openPixModal('Plano Vitalício - iOS', 159.90)">
+          <i class="fa-solid fa-bolt"></i> Comprar via PIX
+        </button>
       </div>
     </div>
-  </div>
 
-  <!-- Gaveta: Minhas Licenças -->
-  <div class="drawer-panel" id="drawer-licenses">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-      <h3 style="font-family: 'Space Grotesk'; font-size: 1.25rem;"><i class="fa-solid fa-key"></i> Suas Licenças</h3>
-      <button class="modal-close-btn" id="btn-close-drawer" style="position: static;"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div id="licenses-items-container"></div>
-  </div>
+    <!-- GRUPO 2: PLANOS ANDROID -->
+    <div id="group-android" class="platform-group">
+      <div class="plan-card">
+        <div>
+          <div class="plan-platform-name">Google Android</div>
+          <h3 class="plan-title">Plano Diário</h3>
+          <div class="plan-price-wrapper">
+            <div class="plan-price-val"><span>R$ </span>10,00</div>
+          </div>
+          <ul class="plan-items-list">
+            <li><i class="fa-solid fa-check"></i> Validade de 24 horas</li>
+            <li><i class="fa-solid fa-check"></i> Injeção Sem Root</li>
+            <li><i class="fa-solid fa-check"></i> Instalação em 1 Minuto</li>
+          </ul>
+        </div>
+        <button class="btn-buy-action" onclick="openPixModal('Plano Diário - Android', 10.00)">
+          <i class="fa-solid fa-bolt"></i> Comprar via PIX
+        </button>
+      </div>
 
-  <div id="toast" class="toast-msg">Mensagem</div>
-
-  <script>
-    // DADOS FIXOS
-    const PIX_KEY = "47576181826";
-    const MERCHANT_NAME = "D4NTES STORE";
-    const MERCHANT_CITY = "SAO PAULO";
-
-    // CATÁLOGO DE PLANOS
-    const plans = [
-      // iOS
-      { id: 'ios-d', platform: 'ios', name: 'Plano Diário', price: 15.00, features: ['Validade de 24 horas', 'Injeção Sem Jailbreak', 'Proteção Antiban Atualizada'] },
-      { id: 'ios-s', platform: 'ios', name: 'Plano Semanal', price: 39.90, features: ['Validade de 7 dias', 'Ajuste Fino de Sensibilidade', 'Atualizações Automáticas'], popular: true },
-      { id: 'ios-m', platform: 'ios', name: 'Plano Mensal', price: 79.90, features: ['Validade de 30 dias', 'Suporte Técnico Prioritário', 'Sem necessidade de PC'] },
-      { id: 'ios-p', platform: 'ios', name: 'Plano Vitalício', price: 159.90, features: ['Acesso Permanente', 'Bypass Vitalício', 'Canal VIP de Clientes'] },
-
-      // Android
-      { id: 'and-d', platform: 'android', name: 'Plano Diário', price: 10.00, features: ['Validade de 24 horas', 'Injeção Direta Sem Root', 'Instalação Rápida'] },
-      { id: 'and-s', platform: 'android', name: 'Plano Semanal', price: 29.90, features: ['Validade de 7 dias', 'Sensibilidade Calibrada', 'Proteção Anticheat'] },
-      { id: 'and-m', platform: 'android', name: 'Plano Mensal', price: 59.90, features: ['Validade de 30 dias', 'Otimização de Mira e FPS', 'Suporte Assistido'], popular: true },
-      { id: 'and-p', platform: 'android', name: 'Plano Vitalício', price: 129.90, features: ['Acesso Vitalício', 'Atualizações Sem Custo', 'Canal Privado VIP'] },
-
-      // Emulador
-      { id: 'emu-d', platform: 'emulator', name: 'Plano Diário', price: 14.90, features: ['Validade de 24 horas', 'Bypass de Emulador (Pareia com Mobile)', 'Compatível BlueStacks / MSI'] },
-      { id: 'emu
+      <div class="plan-card">
+        <div>
+          <div class="plan-platform-name">Google Android</div>
+          <h3 class="plan-title">Plano Semanal</h3>
+          <div class="plan-price-wrapper">
+            <div class="plan-price-val"><span>R$ </span>29,90</div>
+          </div>
+          <ul class="plan-items-list">
+            <li><i class="fa-solid fa-check"></i> Validade de 7 dias</li>
+    
